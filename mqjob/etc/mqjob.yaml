@@ -1,0 +1,37 @@
+Name: mqueue-job
+Host: 0.0.0.0
+Port: 3002
+Mode: dev
+
+#监控
+#Prometheus:
+#  Host: 0.0.0.0
+#  Port: 4010
+#  Path: /metrics
+
+#Link Tracking
+#Telemetry:
+#  Name: mqueue-job
+#  Endpoint: http://jaeger:14268/api/traces
+#  Sampler: 1.0
+#  Batcher: jaeger
+
+Log:
+  ServiceName: data-ana-job
+  Level: debug
+#  Mode: file
+
+Redis:
+  Host: 192.168.3.184:6479
+  Pass: XinYun123
+
+Pg:
+  Datasource: postgres://root:xinyunkeji@114.55.101.221:5432/mon?sslmode=disable
+
+
+JiPushConf:
+  Appkey: 9bd64a2be613387039cd61a5
+  MasterSecret: 563f57fa89f7f1393a34f9a6
+
+
+  

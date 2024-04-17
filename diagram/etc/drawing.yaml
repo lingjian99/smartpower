@@ -1,0 +1,32 @@
+Name: drawing
+Host: 0.0.0.0
+Port: 5825
+Mode: dev
+
+
+JwtAuth:
+  AccessSecret: ae0536f9-6450-4606-8e13-5a19ed505da0
+  AccessExpire: 8640000
+
+Pg:
+  Datasource: postgres://root:xinyunkeji@114.55.101.221:5432/mon?sslmode=disable
+
+Cache:
+  - Host: 192.168.3.184:6379
+    Pass: djxj201585
+#KqConf:
+#  Brokers:
+#    - 114.55.101.221:9093
+#  Group: actgroup
+#  Topic: actmsg
+#  Offset: first
+
+#HwRpcConf:
+#  Target: hw.dajiaxiaojia.com:11300
+
+Log:
+  ServiceName: diagram
+  Encoding: plain
+  Level: debug
+  Mode: file
+  Path: logs

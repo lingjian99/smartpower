@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package pb;
+option go_package = "./pb";
+
+message Empty {}
+
+message DeviceOnline {
+  int64 onlines = 1;
+}
+
+message DeviceData {
+  string bid = 1;
+  int32 code = 2;
+  int32 flag = 3;
+  int32 dst = 4;
+  optional bytes data = 5;
+}
+
+message Conn {
+  string bid = 1;
+}
+
+message BidReq {
+  string bid = 1;
+}
+
+message RemoteControlReq {
+  int32 opCode = 1;
+  int32  opId = 2;
+  string  bid = 3;
+}
+
+message RemoteControlResp {
+  int32 status    = 1;
+  int32 runningState  = 2;
+  int32 mainSwitch   = 3;
+}
+
+message EMTimeSlot {
+  message TimeSlot {
+      int32 type = 1;
+      int32 start = 2;
+      int32 end = 3;
+  }
+  repeated TimeSlot list = 1;
+  string bid = 2;
+}
+
+service device {
+  rpc AnaDeviceConnected(Empty) returns(DeviceOnline);
+
+  rpc SendToDevice(DeviceData) returns (Empty);
+
+  rpc CloseConn(Conn) returns (Empty);
+
+  // 服务器请求材料清单数据
+  rpc Server_MaterialList_Request(BidReq) returns (Empty);
+  // 请求远程控制
+  rpc RemoteControlRequest(RemoteControlReq) returns (RemoteControlResp);
+  // 服务器下发时段配置数据 载体固定96字节
+  rpc EMTimeSlotPollingPush(EMTimeSlot) returns (Empty);
+}

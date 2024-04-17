@@ -1,0 +1,7 @@
+logs
+
+__debug_bin*
+*.exe
+test
+
+*.zip

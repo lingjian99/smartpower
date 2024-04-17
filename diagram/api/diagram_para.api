@@ -1,0 +1,24 @@
+syntax = "v1"
+
+info(
+	title: "绘图"
+	desc: "绘制结构图，并生成一次图"
+	author: "ling"
+	version: "v1"
+)
+
+type (
+	IdReq {
+		Id string `form:"id"`
+	}
+
+	JsonResp {
+		Code int      `json:"id"`
+		Msg  string   `json:"msg"`
+		Body JsonBody `json:"body"`
+	}
+
+	JsonBody {
+		Data string `json:"data"`
+	}
+)

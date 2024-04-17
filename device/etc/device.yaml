@@ -1,0 +1,25 @@
+Name: device.rpc
+ListenOn: 0.0.0.0:12000
+
+HwServer:
+  Network: tcp
+  ListenOn:  0.0.0.0:12001  
+  Multicore: true
+  PriKeys:
+    30: etc/rsa_private_key.pem
+    2: etc/priv/rsa_private_key_2.pem
+    1: etc/priv/rsa_private_key_1.pem
+
+KqConf:
+  Brokers:
+    - 192.168.3.58:9092
+  Group: smartpower
+  Topic: devicemsg
+  Offset: first
+#  Consumers: 32
+
+
+LogX:
+  Encoding: plain
+  Level: debug
+  Mode: file
